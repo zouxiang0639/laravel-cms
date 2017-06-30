@@ -145,6 +145,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //第三方扩展
+        Collective\Html\HtmlServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
+
     ],
 
     /*
@@ -192,6 +196,11 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        //第三方扩展
+        'HTML'      => Collective\Html\HtmlFacade::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Captcha'   => Mews\Captcha\Facades\Captcha::class,
 
     ],
 
