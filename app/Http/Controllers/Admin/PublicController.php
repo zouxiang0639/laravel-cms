@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use Menu;
+use Auth;
+
 class PublicController extends BaseController
 {
 
@@ -9,4 +12,16 @@ class PublicController extends BaseController
         return $this->view('index');
     }
 
+    public function main()
+    {
+       dd(Menu::get('admin-menu'));  die;
+        return $this->view('main');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin.login.index');
+
+    }
 }

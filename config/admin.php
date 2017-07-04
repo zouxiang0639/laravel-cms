@@ -1,5 +1,13 @@
 <?php
 
 return [
-    'prefix' => 'admin',
+    'views' => [
+        'layout' => 'admin.layouts.master',
+        'prefix' => 'admin'
+    ],
+    'filter' => [
+        'auth' => [
+            App\Http\Middleware\Authenticate::class,
+        ],
+    ]
 ];

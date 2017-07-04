@@ -8,6 +8,11 @@ use View;
 
 abstract class BaseController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+
     /**
      * Show view.
      *
@@ -19,8 +24,10 @@ abstract class BaseController extends Controller
      */
     public function view($view, $data = array(), $mergeData = array())
     {
-        $prefix = config('admin.prefix');
-        return View::make($prefix.'.'.$view, $data, $mergeData);
+        $config = config('admin.views');
+        $data = array_merge($config, $data);
+
+        return View::make($config['prefix'].'.'.$view, $data, $mergeData);
     }
 
 }

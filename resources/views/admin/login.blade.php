@@ -8,19 +8,12 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="Bookmark" href="__ROOT__/static/manage/favicon.ico">
     <link rel="Shortcut Icon" href="__ROOT__/static/manage/favicon.ico"/>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="{!! admin_asset('lib/html5shiv.js') !!}"></script>
-    <script type="text/javascript" src="{!! admin_asset('lib/respond.min.js') !!}"></script>
-    <![endif]-->
-    <!--[if IE 6]>
-    <script type="text/javascript" src="{!! admin_asset('lib/DD_belatedPNG_0.0.8a-min.js') !!}"></script>
-    <script>DD_belatedPNG.fix('*');</script>
-    <![endif]-->
-    <link rel="stylesheet" href="{!! admin_asset('lib/layui/css/layui.css') !!}" media="all"/>
-    <link rel="stylesheet" href="{!! admin_asset('css/main.css') !!}" media="all"/>
     <title>管理登录-管理中心</title>
     <meta name="keywords" content="管理登录-管理中心">
     <meta name="description" content="管理登录-管理中心">
+
+    @include($prefix.'.partials.style')
+
     <style>
         .beg-login-bg {
             width: 100%;
@@ -128,8 +121,9 @@
         </footer>
     {!! Form::close() !!}
 </div>
-<script type="text/javascript" src="{!! admin_asset('lib/jquery/1.9.1/jquery.min.js') !!}"></script>
-<script type="text/javascript" src="{!! admin_asset('lib/layui/layui.js') !!}"></script>
+
+@include($prefix.'.partials.script')
+
 <script type="text/javascript">
     load_captcha();
     function load_captcha() {

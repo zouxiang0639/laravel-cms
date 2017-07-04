@@ -11,7 +11,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="{!! admin_asset('lib/layui/css/layui.css') !!}" media="all" />
+
+    @include($prefix.'.partials.style')
+
     <link rel="stylesheet" href="{!! admin_asset('css/global.css') !!}" media="all">
     <link rel="stylesheet" href="{!! admin_asset('lib/font-awesome/4.2.0/css/font-awesome.min.css') !!}">
 
@@ -60,14 +62,14 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+                            <a href="{!! route('admin.logout') !!}"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
                         </dd>
                     </dl>
                 </li>
             </ul>
             <ul class="layui-nav admin-header-item-mobile">
                 <li class="layui-nav-item">
-                    <a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+                    <a href="{!! route('admin.logout') !!}"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
                 </li>
             </ul>
         </div>
@@ -85,7 +87,7 @@
             </ul>
             <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="main.html"></iframe>
+                    <iframe src="{!! route('admin.main') !!}"></iframe>
                 </div>
             </div>
         </div>
@@ -93,7 +95,7 @@
     <div class="layui-footer footer footer-demo" id="admin-footer">
         <div class="layui-main">
             <p>2016 &copy;
-                <a href="http://m.zhengjinfan.cn/">m.zhengjinfan.cn/</a> LGPL license
+                <a href=""></a> LGPL license
             </p>
         </div>
     </div>
@@ -115,31 +117,9 @@
     </script>
     <!--锁屏模板 end -->
 
-    <script type="text/javascript" src="{!! admin_asset('lib/layui/layui.js') !!}"></script>
+    @include($prefix.'.partials.script')
     <script>
-        var navs = [{
-            "title": "地址本",
-            "icon": "fa-address-book",
-            "href": "",
-            "spread": false,
-            "children": [{
-                "title": "Github",
-                "icon": "fa-github",
-                "href": "https://www.github.com/"
-            }, {
-                "title": "QQ",
-                "icon": "fa-qq",
-                "href": "http://www.qq.com/"
-            }, {
-                "title": "Fly社区",
-                "icon": "&#xe609;",
-                "href": "http://fly.layui.com/"
-            }, {
-                "title": "新浪微博",
-                "icon": "fa-weibo",
-                "href": "http://weibo.com/"
-            }]
-        }];
+        var navs = {!! Menu::get('admin-menu') !!};
         var _ROOT = '{!! admin_asset('js/') !!}';
         layui.use('layer', function() {
             var $ = layui.jquery,

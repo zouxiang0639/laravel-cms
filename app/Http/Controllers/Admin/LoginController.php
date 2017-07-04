@@ -23,7 +23,7 @@ class LoginController extends BaseController
         $validator = Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required',
-            'captcha' => 'required|captcha',
+            //'captcha' => 'required|captcha',
         ], [
             'email.required' => '邮箱必填',
             'password.required' => '密码必填',
@@ -36,18 +36,25 @@ class LoginController extends BaseController
         }
 
         $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
+
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
 
         //用户不存在
         if (empty($user)) {
             return $this->backWithFailed('登入失败!');
         }
 
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            return redirect()->route('admin.index')->withFlashMessage('登入成功!');
+        }
+
        /* $user->last_login_ip = \input::ip();
         $user->last_login_time = date('Y-m-d H:i:s');
         $user->save();*/
 
-        return redirect()->route('admin.index')->withFlashMessage('登入成功!');
+
 
     }
 
