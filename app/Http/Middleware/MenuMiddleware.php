@@ -20,6 +20,7 @@ class MenuMiddleware
      */
     public function handle($request, Closure $next)
     {
+
         Event::listen('router.matched', function ($route, $request){
 
             Menu::destroy('admin-menu');
@@ -36,7 +37,7 @@ class MenuMiddleware
                 $menu->setPresenter(config('menus.styles.sidebarMenu'));
                 $order = 1;
                 $this->addMenuAccount($menu, $user, $order++);
-                $this->addMenuTypographer($menu, $user, $order++);
+                $this->addMenuCategory($menu, $user, $order++);
             });
         });
 
@@ -103,14 +104,13 @@ class MenuMiddleware
      * @param $user
      * @param $order
      */
-    public function addMenuTypographer($menu, $user, $order)
+    public function addMenuCategory($menu, $user, $order)
     {
         try{
-            $menu->dropdown('印刷商管理', function ($sub) use ($user) {
+            $menu->dropdown('内容管理', function ($sub) use ($user) {
 
                 $this->beginBuild();
-                $this->can($user, 'salesapply_sales_list') && $sub->route('admin.index', '印刷商列表', [], 1);
-
+                $this->can($user, 'admin_create_list') && $sub->route('admin.category.list', '导航管理', [], 1);
                 $this->endBuild();
 
             }, $order, ['icon' => 'fa fa-users']);

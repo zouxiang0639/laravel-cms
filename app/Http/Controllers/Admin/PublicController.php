@@ -14,7 +14,6 @@ class PublicController extends BaseController
 
     public function main()
     {
-       dd(Menu::get('admin-menu'));  die;
         return $this->view('main');
     }
 

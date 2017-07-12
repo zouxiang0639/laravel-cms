@@ -1,6 +1,7 @@
 <?php
 namespace App\Library\Menu;
 
+use App\Bls\Admin\MenuBls;
 use Countable;
 use Illuminate\Config\Repository;
 use Illuminate\View\Factory;
@@ -97,7 +98,7 @@ class Menu implements Countable
      */
     public function get($name, $presenter = null)
     {
-       
+
         return $this->has($name) ? $this->menus[$name]->render($presenter) : null;
     }
 
@@ -150,5 +151,12 @@ class Menu implements Countable
     public function destroy()
     {
         $this->menus = array();
+    }
+
+    /**
+     * @return MenuBls
+     */
+    public function adminMenuBls(){
+        return new MenuBls();
     }
 }

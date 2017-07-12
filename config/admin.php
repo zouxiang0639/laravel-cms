@@ -9,5 +9,8 @@ return [
         'auth' => [
             App\Http\Middleware\Authenticate::class,
         ],
+    ],
+    'image' => [
+        'default' => 'images/default-picture.png'
     ]
 ];
