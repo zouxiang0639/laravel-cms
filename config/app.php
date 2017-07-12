@@ -146,7 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //第三方扩展
-        Collective\Html\HtmlServiceProvider::class,
+        \App\Library\Form\HtmlServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
 
         //Library
