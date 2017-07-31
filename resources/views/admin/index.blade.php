@@ -15,7 +15,7 @@
     @include($prefix.'.partials.style')
 
     <link rel="stylesheet" href="{!! admin_asset('css/global.css') !!}" media="all">
-    <link rel="stylesheet" href="{!! admin_asset('lib/font-awesome/4.2.0/css/font-awesome.min.css') !!}">
+    <link rel="stylesheet" href="{!! lib_asset('font-awesome/4.2.0/css/font-awesome.min.css') !!}">
 
 </head>
 

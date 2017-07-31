@@ -1,6 +1,7 @@
 <?php
 namespace App\Bls\Admin\Category\Model;
 
+use App\Bls\Admin\Page\Model\PageModel;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -15,5 +16,13 @@ class CategoryModel extends Model
      * @var string
      */
     protected $table = 'category';
+
+    /**
+     * 页面关联。
+     */
+    public function relationPage()
+    {
+        return $this->belongsTo(PageModel::class, 'page_id');
+    }
 
 }

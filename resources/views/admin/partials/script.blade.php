@@ -1,2 +1,2 @@
-<script type="text/javascript" src="{!! admin_asset('lib/jquery/1.9.1/jquery.min.js') !!}"></script>
-<script type="text/javascript" src="{!! admin_asset('lib/layui/layui.js') !!}"></script>
+<script src="{!! lib_asset('jquery/1.7.2/jquery.min.js') !!}"></script>
+<script type="text/javascript" src="{!! lib_asset('layui/layui.js') !!}"></script>

@@ -13,9 +13,10 @@
 	pca.init = function(province, city, area, initprovince, initcity, initarea){//jQuery选择器, 省-市-区
 		if(!province || !$(province).length) return; 
 		$(province).html('');
-		$(province).append('<option selected>请选择</option>');
+		$(province).append('<option  value="">请选择</option>');
 		for(var i in citys){
-			$(province).append('<option value="'+citys[i].value+'">'+citys[i].name+'</option>');
+			$(province).append('<option  value="'+citys[i].value+'">'+citys[i].name+'</option>');
+
 			pca.keys[citys[i].value] = citys[i];
 		}
 		layui.form('select').render();
@@ -27,7 +28,7 @@
 		  	var cs = pca.keys[data.value];
 
 		  	$(city).html('');
-		  	$(city).append('<option>请选择</option>');
+		  	$(city).append('<option value="">请选择</option>');
 		  	if(cs){
 				cs = cs.city;
 				for(var i in cs){
@@ -50,7 +51,7 @@
 
 		  	var cs = pca.ckeys[data.value];
 		  	$(area).html('');
-		  	$(area).append('<option>请选择</option>');
+		  	$(area).append('<option value="">请选择</option>');
 
 			if (cs.area){
 				$(area).parent().parent().show();
@@ -82,7 +83,7 @@
 	
 	pca.formRender = function(obj){
 
-		$(obj).append('<option>请选择</option>');
+		$(obj).append('<option value="">请选择</option>');
 		layui.form('select').render();
 	};
 	

@@ -8,6 +8,7 @@
         _upload_url = '{!! route('admin.file.store') !!}';
     </script>
     @include($prefix.'.partials.style')
+    <link rel="stylesheet" href="{!! lib_asset('bootstrap/css/bootstrap.min.css') !!}" media="all"/>
     @yield('style')
 </head>
 

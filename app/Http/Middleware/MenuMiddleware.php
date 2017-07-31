@@ -111,6 +111,7 @@ class MenuMiddleware
 
                 $this->beginBuild();
                 $this->can($user, 'admin_create_list') && $sub->route('admin.category.list', '导航管理', [], 1);
+                $this->can($user, 'admin_create_list') && $sub->route('admin.page.list', '页面管理', [], 1);
                 $this->endBuild();
 
             }, $order, ['icon' => 'fa fa-users']);

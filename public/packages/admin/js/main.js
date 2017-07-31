@@ -1,4 +1,4 @@
-layui.use(['form', 'layedit', 'laydate'], function() {
+layui.use(['form'], function() {
 
     /**
      * 上传文件
@@ -42,3 +42,33 @@ layui.use(['form', 'layedit', 'laydate'], function() {
     });
 
 });
+
+
+/**
+ * 错误提示
+ */
+function errorPrompt(error)
+{
+    var htmlString =[];
+    for ( var i in error ) {
+        htmlString.push(error[i]);
+        $('.'+i).addClass('error-prompt');
+    }
+
+    layer.open({
+        title: '错误提示'
+        ,content: htmlString.join("<br>")
+    });
+}
+
+function buttonDisabledTrue(_this)
+{
+    _this.attr('disabled', true);
+    _this.addClass('layui-btn-disabled');
+}
+
+function buttonDisabledFalse(_this)
+{
+    _this.attr('disabled', false);
+    _this.removeClass('layui-btn-disabled');
+}

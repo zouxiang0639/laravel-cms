@@ -10,13 +10,34 @@ class MenuBls
 
     public function categoryMenu($parameters)
     {
+        $filtered = $this->filter($parameters, ['id']);
         $array = [
-            'admin.category.list'      => ['name' => '我的账户'],
-            'admin.category.create'     => ['name' => '创建导航'],
+            'admin.category.list'       => ['name' => '我的账户', 'parameters' => $filtered],
+            'admin.category.create'     => ['name' => '创建导航', 'parameters' => $filtered],
             'admin.category.edit'       => ['name' => '编辑导航', 'parameters' => $parameters, 'attributes' =>['style'=>'display: none;']]
         ];
         self::tabMenu($array);
         return Menu::get('tab_menu');
+    }
+
+    public function pageMenu($parameters)
+    {
+        $array = [
+            'admin.page.list'      => ['name' => '我的账户'],
+            'admin.page.create'     => ['name' => '创建导航'],
+            'admin.page.edit'       => ['name' => '编辑导航', 'parameters' => $parameters, 'attributes' =>['style'=>'display: none;']]
+        ];
+        self::tabMenu($array);
+        return Menu::get('tab_menu');
+    }
+
+    private function filter($parameters, $field)
+    {
+        foreach ($field as $value)
+        {
+            unset($parameters[$value]);
+        }
+        return $parameters;
     }
 
     private function tabMenu($array){

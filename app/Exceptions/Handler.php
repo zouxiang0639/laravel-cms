@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use App\Library\Response\JsonResponse;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +46,12 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        if ($e instanceof LogicException) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return new Response((new JsonResponse())->error($e->getCode(), $e->getMessage(), $e->getData()));
+            }
         }
 
         return parent::render($request, $e);

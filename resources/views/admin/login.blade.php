@@ -28,15 +28,14 @@
             min-width: 400px;
             max-width: 450px;
             height: 330px;
-            margin: 10% auto;
+            margin: 15% auto;
             background-color: rgba(255, 255, 255, 0.407843);
             border-radius: 10px;
-            color: aliceblue;
+
         }
 
         .beg-login-box header {
             height: 39px;
-            padding: 10px;
             border-bottom: 1px dotted #fff;
         }
 
