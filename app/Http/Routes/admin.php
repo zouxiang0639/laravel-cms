@@ -5,5 +5,5 @@ Route::group(['prefix'=>'admin'], function(){
     require 'admin/category.php';
     require 'admin/file.php';
     require 'admin/page.php';
-
+    require 'admin/log.php';
 });

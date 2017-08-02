@@ -38,6 +38,7 @@ class MenuMiddleware
                 $order = 1;
                 $this->addMenuAccount($menu, $user, $order++);
                 $this->addMenuCategory($menu, $user, $order++);
+                $this->addMenuLog($menu, $user, $order++);
             });
         });
 
@@ -97,9 +98,29 @@ class MenuMiddleware
         }catch(NoMenuException $e){
         }
     }
+    /**
+     * 日志管理
+     * @param $menu
+     * @param $user
+     * @param $order
+     */
+    public function addMenuLog($menu, $user, $order)
+    {
+        try{
+            $menu->dropdown('日志管理', function ($sub) use ($user) {
+
+                $this->beginBuild();
+                $this->can($user, 'admin_create_list') && $sub->route('admin.log.system-error', '系统错误日志', [], 1);
+                $this->endBuild();
+
+            }, $order, ['icon' => 'fa fa-users']);
+
+        }catch(NoMenuException $e){
+        }
+    }
 
     /**
-     * 印刷商管理
+     * 内容管理
      * @param $menu
      * @param $user
      * @param $order

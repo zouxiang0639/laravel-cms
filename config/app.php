@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -146,8 +146,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //第三方扩展
-        \App\Library\Form\HtmlServiceProvider::class,
+        App\Library\Form\HtmlServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
         //Library
         App\Library\Menu\MenusServiceProvider::class,
