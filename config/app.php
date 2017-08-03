@@ -149,6 +149,7 @@ return [
         App\Library\Form\HtmlServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         //Library
         App\Library\Menu\MenusServiceProvider::class,
@@ -206,6 +207,7 @@ return [
         'HTML'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Captcha'   => Mews\Captcha\Facades\Captcha::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         //Library
         'Menu'      => App\Library\Menu\MenuFacade::class,
